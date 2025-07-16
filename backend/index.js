@@ -5,53 +5,50 @@ import cors from "cors";
 import todoRoute from "./routes/todo.route.js";
 import userRoute from "./routes/user.route.js";
 import cookieParser from "cookie-parser";
-const app = express();
+
 dotenv.config();
 
-const PORT = process.env.PORT || 4001
+const app = express();
+
+// Environment variables
+const PORT = process.env.PORT || 4001;
 const DB_URI = process.env.MONGODB_URI;
+const FRONTEND_URLS = (process.env.FRONTEND_URLS || "http://localhost:5173,https://todo-eight-zeta-12.vercel.app")
+  .split(",")
+  .map(url => url.trim());
 
+// Log the allowed origins for debug
+console.log("Allowed frontend origins:", FRONTEND_URLS);
 
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://todo-eight-zeta-12.vercel.app/";
-
+// Single CORS middleware
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: FRONTEND_URLS,
     credentials: true,
   })
 );
 
-// middlewares
+// Other middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "https://todo-eight-zeta-12.vercel.app/"],
-    credentials: true,
-  })
-);
 
-// Database connection code
+// Routes
+app.use("/todo", todoRoute);
+app.use("/user", userRoute);
+
+app.get("/", (req, res) => {
+  res.send("API Working");
+});
+
+// Database connection
 try {
   await mongoose.connect(DB_URI);
   console.log("Connected to MongoDB");
 } catch (error) {
-  console.log(error);
+  console.error("MongoDB connection error:", error);
 }
 
-// routes
-app.use("/todo", todoRoute);
-app.use("/user", userRoute);
-
-console.log("FRONTEND_URL from .env:", process.env.FRONTEND_URL);
-
-
-
+// Server start
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT} `);
+  console.log(`Server is running on port ${PORT}`);
 });
-
-
-app.get("/",(req,res)=>{
-  res.send("Api Working")
-})
