@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://todo-220001876521.asia-south2.run.app/"],
+    origin: ["http://localhost:5173", "https://todo-eight-zeta-12.vercel.app/"],
     credentials: true,
   })
 );
