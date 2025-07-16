@@ -50,3 +50,8 @@ console.log("FRONTEND_URL from .env:", process.env.FRONTEND_URL);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT} `);
 });
+
+
+app.get("/",(req,res)=>{
+  res.send("Api Working")
+})

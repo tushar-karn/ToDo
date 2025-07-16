@@ -100,7 +100,7 @@ function Home() {
   const remainingTodos = todos.filter((todo) => !todo.completed).length;
 
   return (
-    <div className=" my-10 bg-gray-100 max-w-lg lg:max-w-xl rounded-lg shadow-lg mx-8 sm:mx-auto p-6">
+    <div className="max-w-lg p-6 mx-8 my-10 bg-gray-100 rounded-lg shadow-lg  lg:max-w-xl sm:mx-auto">
       <h1 className="text-2xl font-semibold text-center">Todo App</h1>
       <div className="flex mb-4">
         <input
@@ -113,17 +113,17 @@ function Home() {
         />
         <button
           onClick={todoCreate}
-          className="bg-blue-600 border rounded-r-md text-white px-4 py-2 hover:bg-blue-900 duration-300"
+          className="px-4 py-2 text-white duration-300 bg-blue-600 border rounded-r-md hover:bg-blue-900"
         >
           Add
         </button>
       </div>
       {loading ? (
-        <div className="text-center justify-center">
+        <div className="justify-center text-center">
           <span className="textgray-500">Loading...</span>
         </div>
       ) : error ? (
-        <div className="text-center text-red-600 font-semibold">{error}</div>
+        <div className="font-semibold text-center text-red-600">{error}</div>
       ) : (
         <ul className="space-y-2">
           {todos.map((todo, index) => (
@@ -150,7 +150,7 @@ function Home() {
               </div>
               <button
                 onClick={() => todoDelete(todo._id)}
-                className="text-red-500 hover:text-red-800 duration-300"
+                className="text-red-500 duration-300 hover:text-red-800"
               >
                 Delete
               </button>
@@ -159,12 +159,12 @@ function Home() {
         </ul>
       )}
 
-      <p className="mt-4 text-center text-sm text-gray-700">
+      <p className="mt-4 text-sm text-center text-gray-700">
         {remainingTodos} remaining todos
       </p>
       <button
         onClick={() => logout()}
-        className="mt-6 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-800 duration-500 mx-auto block"
+        className="block px-4 py-2 mx-auto mt-6 text-white duration-500 bg-red-500 rounded-md hover:bg-red-800"
       >
         Logout
       </button>
