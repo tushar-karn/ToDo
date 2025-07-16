@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4001
 const DB_URI = process.env.MONGODB_URI;
 
 
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://todo-eight-zeta-12.vercel.app/";
 
 app.use(
   cors({
@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://todo-eight-zeta-12.vercel.app/",
     credentials: true,
   })
 );
