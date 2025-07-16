@@ -37,7 +37,7 @@ app.use("/todo", todoRoute);
 app.use("/user", userRoute);
 
 app.get("/", (req, res) => {
-  res.send("API Working");
+  res.send("API Working new");
 });
 
 // Database connection
