@@ -12,7 +12,7 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/user/login",
+        "https://todo-220001876521.asia-south2.run.app/user/login",
         {
           email,
           password,
@@ -39,9 +39,9 @@ function Login() {
   return (
     <div>
       <div>
-        <div className="flex h-screen items-center justify-center bg-gray-100">
+        <div className="flex items-center justify-center h-screen bg-gray-100">
           <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold mb-5 text-center">Login</h2>
+            <h2 className="mb-5 text-2xl font-semibold text-center">Login</h2>
             <form onSubmit={handleRegister}>
               {/* email */}
               <div className="mb-4">
@@ -72,7 +72,7 @@ function Login() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white hover:bg-blue-900 duration-300 rounded-xl font-semibold p-3"
+                className="w-full p-3 font-semibold text-white duration-300 bg-blue-600 hover:bg-blue-900 rounded-xl"
               >
                 Login
               </button>

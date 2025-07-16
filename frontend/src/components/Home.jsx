@@ -13,7 +13,7 @@ function Home() {
     const fetchtodos = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:4001/todo/fetch", {
+        const response = await axios.get("https://todo-220001876521.asia-south2.run.app/todo/fetch", {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
@@ -35,7 +35,7 @@ function Home() {
     if (!newTodo) return;
     try {
       const response = await axios.post(
-        "http://localhost:4001/todo/create",
+        "https://todo-220001876521.asia-south2.run.app/todo/create",
         {
           text: newTodo,
           completed: false,
@@ -56,7 +56,7 @@ function Home() {
     const todo = todos.find((t) => t._id === id);
     try {
       const response = await axios.put(
-        `http://localhost:4001/todo/update/${id}`,
+        `https://todo-220001876521.asia-south2.run.app/todo/update/${id}`,
         {
           ...todo,
           completed: !todo.completed,
@@ -74,7 +74,7 @@ function Home() {
 
   const todoDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4001/todo/delete/${id}`, {
+      await axios.delete(`https://todo-220001876521.asia-south2.run.app/todo/delete/${id}`, {
         withCredentials: true,
       });
       setTodos(todos.filter((t) => t._id !== id));
@@ -86,7 +86,7 @@ function Home() {
   const navigateTo = useNavigate();
   const logout = async () => {
     try {
-      await axios.get("http://localhost:4001/user/logout", {
+      await axios.get("https://todo-220001876521.asia-south2.run.app/user/logout", {
         withCredentials: true,
       });
       toast.success("User logged out successfully");
@@ -100,7 +100,7 @@ function Home() {
   const remainingTodos = todos.filter((todo) => !todo.completed).length;
 
   return (
-    <div className="max-w-lg p-6 mx-8 my-10 bg-gray-100 rounded-lg shadow-lg  lg:max-w-xl sm:mx-auto">
+    <div className="max-w-lg p-6 mx-8 my-10 bg-gray-100 rounded-lg shadow-lg lg:max-w-xl sm:mx-auto">
       <h1 className="text-2xl font-semibold text-center">Todo App</h1>
       <div className="flex mb-4">
         <input
